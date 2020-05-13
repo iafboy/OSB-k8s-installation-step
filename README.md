@@ -50,7 +50,7 @@ cd /root/soa/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-soa-
 - init domain
 ```
 cd /root/soa/scripts/weblogic-domains/soainfra
-kubectl apply -f domain.yaml
+kubectl apply -f domain.yaml -n soans
 ```
 
 # Clean all
