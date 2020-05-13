@@ -53,7 +53,7 @@ cd /root/soa/scripts/weblogic-domains/soainfra
 kubectl apply -f domain.yaml
 ```
 
-# clean all
+# Clean all
 - clean domain
 ```
 cd /root/soa/scripts/weblogic-domains/soainfra  
