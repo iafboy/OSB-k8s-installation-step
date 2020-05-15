@@ -1,6 +1,6 @@
 # Shows how to install OSB in k8s by using weblogic-kubernetes-operator
 ### Detail information please refer to https://oracle.github.io/weblogic-kubernetes-operator/samples/simple/domains/soa-domain/
-### please make sure the k8s version is 1.15, the weblogic-kubernetes-operator v2.4.0 and v2.5.0 didn't support k8s 1.16+. and also helm installed
+### please make sure the kubernetes version is 1.15, the weblogic-kubernetes-operator v2.4.0 and v2.5.0 didn't support kubernetes 1.16+. and also please make sure helm installed
 
 # Steps
 - Checkout sourcecode( for example clone to directory '/root/soa' )
