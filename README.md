@@ -9,6 +9,8 @@ git clone https://github.com/oracle/weblogic-kubernetes-operator.git
 cd weblogic-kubernetes-operator
 git checkout v2.4.0
 ```
+- get operator
+```
 docker pull oracle/weblogic-kubernetes-operator:2.5.0
 ```
 - get Traefik
@@ -21,20 +23,20 @@ docker pull container-registry.oracle.com/middleware/soasuite:12.2.1.3
 ```
 - Grant the Helm service account the cluster-admin role
 ```
-get imagecat <<EOF | kubectl apply -f -
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: helm-user-cluster-admin-role
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: default
-  namespace: kube-system
-EOF
+  get imagecat <<EOF | kubectl apply -f -
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: helm-user-cluster-admin-role
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: cluster-admin
+  subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: kube-system
+  EOF
 ```
 - Use Helm to install the operator and Traefik load balancer
 ```
@@ -44,11 +46,11 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 kubectl create namespace traefik
 
-helm install traefik-operator stable/traefik \
-    --namespace traefik \
-    --values kubernetes/samples/charts/traefik/values.yaml \
-    --set "kubernetes.namespaces={traefik}" \
-    --wait
+ helm install traefik-operator stable/traefik \
+     --namespace traefik \
+     --values kubernetes/samples/charts/traefik/values.yaml \
+     --set "kubernetes.namespaces={traefik}" \
+     --wait
 ```
 - install operator
 ```
