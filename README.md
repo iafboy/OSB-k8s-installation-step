@@ -85,6 +85,11 @@ helm upgrade traefik-operator stable/traefik \
     --set "kubernetes.namespaces={traefik,soans}" \
     --wait
 ```    
+- create pv and pvc for domain
+```
+kubectl -n soans -f soainfra-domain-pv.yaml
+kubectl -n soans -f soainfra-domain-pvc.yaml
+```
 - create db
 ```
 cd /root/soa/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-schema
