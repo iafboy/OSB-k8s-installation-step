@@ -65,6 +65,10 @@ helm install sample-weblogic-operator kubernetes/charts/weblogic-operator \
   --set "domainNamespaces={}" \
   --wait
 ```
+- create namespace
+```
+kubectl create namespace soans
+```
 - create db
 ```
 cd /root/soa/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-schema
@@ -75,7 +79,7 @@ cd /root/soa/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-
 cd /root/soa/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-schema
 ./create-rcu-schema.sh \
   -s SOA1 \
-  -t osb \
+  -t soaessosb \
   -d oracle-db.default.svc.cluster.local:1521/devpdb.k8s \
   -i container-registry.oracle.com/middleware/soasuite:12.2.1.3
 ```
