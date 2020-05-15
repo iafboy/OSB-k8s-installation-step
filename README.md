@@ -69,6 +69,22 @@ helm install sample-weblogic-operator kubernetes/charts/weblogic-operator \
 ```
 kubectl create namespace soans
 ```
+- Use helm to configure the operator to manage domains in this namespace soans
+```
+helm upgrade sample-weblogic-operator  kubernetes/charts/weblogic-operator \
+    --namespace soans \
+    --reuse-values \
+    --set "domainNamespaces={soans}" \
+    --wait
+```
+- Configure Traefik to manage ingresses created in this namespace
+```
+helm upgrade traefik-operator stable/traefik \
+    --namespace traefik \
+    --reuse-values \
+    --set "kubernetes.namespaces={traefik,soans}" \
+    --wait
+```    
 - create db
 ```
 cd /root/soa/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-schema
