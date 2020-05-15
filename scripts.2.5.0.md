@@ -1,4 +1,6 @@
-#drop rcu
+# Note. the last version of operator have problem.please check out v2.4.0 version！
+
+## drop rcu
 cd /root/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-schema
 
 ./drop-rcu-schema.sh -s SOA1 \
@@ -7,15 +9,11 @@ cd /root/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-sche
   
 
  
-# stop db
-#cd /root/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-oracle-db-service/
-
-#./stop-db-service.sh -n soans
-
+## stop db
 cd /root/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-soa-domain/domain-home-on-pv/create-database
 kubectl -n soans delete -f db-with-pv.yaml
 
-#clean 
+## clean 
 cd /root/soa/scripts/weblogic-domains/soainfra
 kubectl apply -f delete-domain-job.yaml -n soans
 kubectl -n soans delete -f domain.yaml
@@ -28,26 +26,25 @@ rm -rf /root/soa/scripts/weblogic-domains
 
 
 
-# check status
+## check status
 kubectl -n soans get all
 kubectl get all
 kubectl -n soans get secret
 kubectl get secret
 
 
-#start db
+## start db
 #cd /root/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-oracle-db-service/
 #./start-db-service.sh -n soans
 cd /root/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-soa-domain/domain-home-on-pv/create-database
 kubectl -n soans create -f db-with-pv.yaml
 
 
-#./create-image-pull-secret.sh -u xiaobing.ju@oracle.com -p $RFV5tgb^YHN -e xiaobing.ju@oracle.com 
 
 cd /root/weblogic-kubernetes-operator/kubernetes
-#modify weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-schema/common/rcu.yaml
-#  change imagePullPolicy: Always--->imagePullPolicy: IfNotPresent 
-# change namespace in common/rcu.yaml to soans
+### modify weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-schema/common/rcu.yaml
+###  change imagePullPolicy: Always--->imagePullPolicy: IfNotPresent 
+### change namespace in common/rcu.yaml to soans
 
 
 cd /root/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-schema
@@ -58,8 +55,8 @@ cd /root/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-sche
   -d oracle-db.soans.svc.cluster.local:1521/devpdb.k8s \
   -i container-registry.oracle.com/middleware/soasuite:12.2.1.3
 
-##Modify the domain.input.yaml to use [oracle-db.soans.svc.cluster.local:1521/devpdb.k8s] as rcuDatabaseURL and [SOA1] as rcuSchemaPrefix 
-## Modify the domain.input.yaml to use [oracle-db.default.svc.cluster.local:1521/devpdb.k8s] as rcuDatabaseURL and [SOA1] as rcuSchemaPrefix 
+### Modify the domain.input.yaml to use [oracle-db.soans.svc.cluster.local:1521/devpdb.k8s] as rcuDatabaseURL and [SOA1] as rcuSchemaPrefix 
+### Modify the domain.input.yaml to use [oracle-db.default.svc.cluster.local:1521/devpdb.k8s] as rcuDatabaseURL and [SOA1] as rcuSchemaPrefix 
 
 
 kubectl -n soans delete secret soainfra-rcu-credentials
