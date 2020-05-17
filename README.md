@@ -153,7 +153,7 @@ cd /root/soa/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-
 ./drop-rcu-schema.sh \
   -s SOA1 \
   -d oracle-db.default.svc.cluster.local:1521/devpdb.k8s \
-  -t osb 
+  -t soaessosb 
 ```
 - clean db
 ```
