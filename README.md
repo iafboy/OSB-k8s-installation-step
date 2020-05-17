@@ -165,3 +165,8 @@ cd /root/soa/weblogic-kubernetes-operator/kubernetes/samples/scripts/create-rcu-
 kubectl -n soans delete secret soainfra-rcu-credentials
 kubectl -n soans delete secret soainfra-domain-credentials
 ```
+- or we can use script delete demo
+```
+cd /root/soa/weblogic-kubernetes-operator/kubernetes/samples/scripts/delete-domain
+./delete-weblogic-domain-resources.sh -d soainfra
+```
