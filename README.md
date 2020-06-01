@@ -47,7 +47,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 kubectl create namespace traefik
 
- helm install traefik-operator stable/traefik \
+ helm install -n traefik-operator stable/traefik \
      --namespace traefik \
      --values kubernetes/samples/charts/traefik/values.yaml \
      --set "kubernetes.namespaces={traefik}" \
