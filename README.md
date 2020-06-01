@@ -59,7 +59,7 @@ kubectl create namespace sample-weblogic-operator-ns
 
 kubectl create serviceaccount -n sample-weblogic-operator-ns sample-weblogic-operator-sa
 
-helm install sample-weblogic-operator kubernetes/charts/weblogic-operator \
+helm install -n sample-weblogic-operator kubernetes/charts/weblogic-operator \
   --namespace sample-weblogic-operator-ns \
   --set image=oracle/weblogic-kubernetes-operator:2.5.0 \
   --set serviceAccount=sample-weblogic-operator-sa \
@@ -88,8 +88,8 @@ helm upgrade traefik-operator stable/traefik \
 ```    
 - create pv and pvc for domain
 ```
-kubectl -n soans -f soainfra-domain-pv.yaml
-kubectl -n soans -f soainfra-domain-pvc.yaml
+kubectl -n soans apply -f soainfra-domain-pv.yaml
+kubectl -n soans apply -f soainfra-domain-pvc.yaml
 ```
 - create db
 ```
