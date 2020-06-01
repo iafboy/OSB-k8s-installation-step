@@ -24,7 +24,7 @@ docker pull container-registry.oracle.com/middleware/soasuite:12.2.1.3
 ```
 - Grant the Helm service account the cluster-admin role
 ```
-  get imagecat <<EOF | kubectl apply -f -
+  cat <<EOF | kubectl apply -f -
   apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRoleBinding
   metadata:
