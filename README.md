@@ -64,7 +64,7 @@ kubectl create namespace sample-weblogic-operator-ns
 kubectl create serviceaccount -n soans sample-weblogic-operator-sa
 
 helm install -n sample-weblogic-operator kubernetes/charts/weblogic-operator \
-  --namespace sample-weblogic-operator-ns \
+  --namespace soans \
   --set image=oracle/weblogic-kubernetes-operator:2.5.0 \
   --set serviceAccount=sample-weblogic-operator-sa \
   --set "domainNamespaces={soans}" \
