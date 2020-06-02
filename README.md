@@ -71,7 +71,7 @@ helm install -n sample-weblogic-operator kubernetes/charts/weblogic-operator \
   --wait
 ```
 
-- Use helm to configure the operator to manage domains in this namespace soans
+- Use helm to configure the operator to manage domains in this namespace soans(if not in soans namespace)
 ```
 helm upgrade sample-weblogic-operator  kubernetes/charts/weblogic-operator \
     --namespace soans \
