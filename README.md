@@ -53,23 +53,24 @@ kubectl create namespace traefik
      --set "kubernetes.namespaces={traefik}" \
      --wait
 ```
+- create namespace
+```
+kubectl create namespace soans
+```
 - install operator
 ```
 kubectl create namespace sample-weblogic-operator-ns
 
-kubectl create serviceaccount -n sample-weblogic-operator-ns sample-weblogic-operator-sa
+kubectl create serviceaccount -n soans sample-weblogic-operator-sa
 
 helm install -n sample-weblogic-operator kubernetes/charts/weblogic-operator \
   --namespace sample-weblogic-operator-ns \
   --set image=oracle/weblogic-kubernetes-operator:2.5.0 \
   --set serviceAccount=sample-weblogic-operator-sa \
-  --set "domainNamespaces={}" \
+  --set "domainNamespaces={soans}" \
   --wait
 ```
-- create namespace
-```
-kubectl create namespace soans
-```
+
 - Use helm to configure the operator to manage domains in this namespace soans
 ```
 helm upgrade sample-weblogic-operator  kubernetes/charts/weblogic-operator \
